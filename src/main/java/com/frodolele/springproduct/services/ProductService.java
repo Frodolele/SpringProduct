@@ -14,7 +14,7 @@ public interface ProductService {
 
     boolean update(Product product, int id);
 
-    boolean delete(Product product, int id);
+    boolean delete(int id);
 
     List<Product> getAllLeftovers();
 

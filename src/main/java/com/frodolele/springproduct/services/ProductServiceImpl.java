@@ -1,6 +1,7 @@
 package com.frodolele.springproduct.services;
 
 import com.frodolele.springproduct.model.Product;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean delete(Product product, int id) {
+    public boolean delete(int id) {
         return PRODUCT_REPOSITORY_MAP.remove(id) != null;
     }
 
