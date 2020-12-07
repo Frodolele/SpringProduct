@@ -24,9 +24,10 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/products/{name}")
+    // use http://localhost:8080/products?name=enterName
+    @RequestMapping(value = "/products")
     @ResponseBody
-    public ResponseEntity<List<Product>> findByName(@PathVariable(name = "name") String name) {
+    public ResponseEntity<List<Product>> findByName(@RequestParam(value = "name") String name) {
         final List<Product> productsAfterCheck = productService.findByNameOrBrand(name);
 
         return productsAfterCheck != null && !productsAfterCheck.isEmpty()
@@ -61,7 +62,8 @@ public class ProductController {
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
-    
+
+    // returned all elements where quantity < 5
     @GetMapping(value = "/products")
     public ResponseEntity<List<Product>> read(){
         final List<Product> productsLeftovers = productService.getAllLeftovers();
