@@ -35,9 +35,10 @@ public class ProductController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/products/{brand}")
+    // use http://localhost:8080/products?brand=enterName
+    @RequestMapping(value = "/products")
     @ResponseBody
-    public ResponseEntity<List<Product>> findByBrand(@PathVariable(name = "brand") String brand) {
+    public ResponseEntity<List<Product>> findByBrand(@RequestParam(value = "brand") String brand) {
         final List<Product> productsAfterCheck = productService.findByNameOrBrand(brand);
 
         return productsAfterCheck != null && !productsAfterCheck.isEmpty()
