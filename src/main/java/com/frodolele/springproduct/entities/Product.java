@@ -1,12 +1,26 @@
-package com.frodolele.springproduct.model;
+package com.frodolele.springproduct.entities;
 
-// POJO class, which description product from DB
+import javax.persistence.*;
+
+//
+@Entity
+@Table(name = "products")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="brand")
     private String brand;
+
+    @Column(name="price")
     private Integer price;
+
+    @Column(name="quantity")
     private Integer quantity;
 
     public String getName() {
@@ -48,4 +62,10 @@ public class Product {
     public void setId(int id) {
         this.id = id;
     }
+
+    public Product(){
+
+    }
+
+
 }

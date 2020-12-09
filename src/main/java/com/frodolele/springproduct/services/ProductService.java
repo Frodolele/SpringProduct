@@ -1,6 +1,6 @@
 package com.frodolele.springproduct.services;
 
-import com.frodolele.springproduct.model.Product;
+import com.frodolele.springproduct.entities.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,13 +8,17 @@ import java.util.List;
 @Service
 public interface ProductService {
 
-    void create(Product product);
+    void addOrUpdate(Product product);
 
-    List<Product> findByNameOrBrand(String nameOrBrand);
+    List<Product> findAll();
 
-    boolean update(Product product, int id);
+    List<Product> findByName (String name);
 
-    boolean delete(int id);
+    List<Product> findByBrand (String brand);
+
+    List<Product> findByNameAndBrand(String name, String brand);
+
+    void delete(int id);
 
     List<Product> getAllLeftovers();
 
